@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Sitio Web</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        header {
+            background-color: #3498db; /* Azul */
+            color: #fff; /* Texto blanco */
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Vuelos</h1>
+        <nav>
+            <a href="http://localhost/">Inicio</a>
+            <a th:href="@{/clientes/Clientes}">Clientes</a>
+            <a th:href="@{/vuelos/Vuelos}">Vuelos</a>
+            <a th:href="@{/prereservas/Prereservas}">Prereservas</a>
+            <a th:href="@{/reservas/Reservas}">Reservas</a>
+        </nav>
+    </header>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Número de Vuelo</th>
+                <th>Destino</th>
+                <th>Lugar de Salida</th>
+                <th>Hora de Salida</th>
+                <th>Fecha de Salida</th>
+                <th>Fecha de Llegada</th>
+                <th>Modelo de Avión</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Utiliza Thymeleaf para iterar sobre la lista de vuelos -->
+            <tr th:each="vuelo : ${vuelos}">
+                <td th:text="${vuelo.id}"></td>
+                <td th:text="${vuelo.numero_vuelo}"></td>
+                <td th:text="${vuelo.destino}"></td>
+                <td th:text="${vuelo.lugar_salida}"></td>
+                <!-- Utiliza Thymeleaf para formatear la hora de salida -->
+                <td th:text="${#dates.format(vuelo.hora_salida, 'dd-MM-yyyy HH:mm')}"></td>
+                <td th:text="${#dates.format(vuelo.fecha_salida, 'dd-MM-yyyy')}"></td>
+                <td th:text="${#dates.format(vuelo.fecha_llegada, 'dd-MM-yyyy')}"></td>
+                <td th:text="${vuelo.modelo_avion}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

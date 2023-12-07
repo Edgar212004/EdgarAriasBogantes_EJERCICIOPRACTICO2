@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FideFlights</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        header {
+            background-color: #3498db; /* Azul */
+            color: #fff; /* Texto blanco */
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        #login-btn {
+            background-color: #ffeb3b; /* Amarillo */
+            color: #333; /* Texto oscuro */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #video-container {
+            background-color: #ffeb3b; /* Amarillo */
+            padding: 20px;
+            text-align: center;
+            display: flex; /* Establece el contenedor como un flex container */
+            justify-content: space-around; /* Espaciado uniforme entre los elementos hijos */
+            flex-wrap: wrap; /* Permite que los elementos hijos se envuelvan en una nueva línea si no hay suficiente espacio */
+        }
+
+        .video-wrapper {
+            width: 48%; /* Establece el ancho de cada video */
+            box-sizing: border-box; /* Incluye el relleno y el borde en el ancho total */
+            margin: 10px; /* Añade un margen entre los videos */
+        }
+
+        .video-wrapper iframe {
+            width: 100%; /* Hace que el iframe ocupe el 100% del contenedor */
+        }
+    </style>
+</head>
+<body>
+
+    <header th:fragment="header" class="header">
+        <h1>FideFlights</h1>
+        <nav>
+            <a href="http://localhost/">Inicio</a>
+            <a th:href="@{/clientes/Clientes}">Clientes</a>
+            <a th:href="@{/vuelos/Vuelos}">Vuelos</a>
+            <a th:href="@{/prereservas/Prereservas}">Prereservas</a>
+            <a th:href="@{/reservas/Reservas}">Reservas</a>
+        </nav>
+        <button id="login-btn">Iniciar Sesión</button>
+    </header>
+
+    <div id="video-container">
+        <h2>Explora Nuestros Destinos</h2>
+        
+        <!-- Primer video -->
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/FtD7hBacnTo" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <!-- Segundo video -->
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/8lxo5MH8dMU" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+</body>
+</html>
+

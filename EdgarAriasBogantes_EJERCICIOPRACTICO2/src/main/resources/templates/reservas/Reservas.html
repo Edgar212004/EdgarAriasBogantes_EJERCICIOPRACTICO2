@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Sitio Web</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        header {
+            background-color: #3498db; /* Azul */
+            color: #fff; /* Texto blanco */
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Reservas</h1>
+        <nav>
+            <a href="http://localhost/">Inicio</a>
+            <a th:href="@{/clientes/Clientes}">Clientes</a>
+            <a th:href="@{/vuelos/Vuelos}">Vuelos</a>
+            <a th:href="@{/prereservas/Prereservas}">Prereservas</a>
+            <a th:href="@{/reservas/Reservas}">Reservas</a>
+        </nav>
+    </header>
+
+     <div>
+        <h2>Listado de Reservas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ID Vuelo</th>
+                    <th>ID Cliente</th>
+                    <th>Fecha de Reserva</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterar sobre las reservas y mostrar los datos -->
+                <tr th:each="reserva : ${reservas}">
+                    <td th:text="${reserva.id}"></td>
+                    <td th:text="${reserva.id_vuelo}"></td>
+                    <td th:text="${reserva.id_cliente}"></td>
+                    <td th:text="${#dates.format(reserva.fecha_reserva, 'dd-MM-yyyy HH:mm')}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
